@@ -23,6 +23,10 @@ module.exports = {
     'import/resolver': {
       node: {
         extensions: ['.tsx', '.ts', '.ts'],
+        moduleDirectory: ['node_modules', 'src/'],
+      },
+      typescript: {
+        alwaysTryTypes: true,
       },
     },
   },

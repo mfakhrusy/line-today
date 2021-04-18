@@ -47,6 +47,7 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "https://today.line.me",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
