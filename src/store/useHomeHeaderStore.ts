@@ -9,6 +9,7 @@ type HomeHeaderStore = {
   setHeaderCategoryVariant: (variant: HeaderCategoryVariant) => void;
 }
 
+// default category id using TOP category
 const topCategoryID = 100270;
 
 const useHomeHeaderStore = createStore<HomeHeaderStore>((set) => ({

@@ -13,6 +13,9 @@ function HomeBody() {
       {
         activeCategory?.templates.map(({ title, type, sections }) => {
           switch (type) {
+            // manually adding type here
+            // each type can use different UI template
+            // as needed
             case 6:
             case 50:
             case 59:

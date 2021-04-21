@@ -24,7 +24,8 @@ type ArticleToBeRemoved = {
 function BookmarkScreen() {
   const bookmarkStorage: Array<number> = useMemo(() => JSON.parse(localStorage.getItem('bookmark') ?? '[]'), []);
   const [articleToBeRemoved, setArticleToBeRemoved] = useState<ArticleToBeRemoved | null>(null);
-  const ref = useRef();
+  const leastDestructiveRef = useRef();
+  const [isSmallerThan768] = useMediaQuery('(max-width: 768px)');
 
   const data = getHomeQuery();
   const allArticles = data.data?.result.categories
@@ -36,17 +37,10 @@ function BookmarkScreen() {
   const bookmarkedArticles = allArticles
     ?.filter((article) => bookmarkStorage.includes(article?.id ?? 0));
 
+  // article can have duplicates for the same id so we're keeping it unique
   const uniqueBookmarkedArticles = uniqBy(bookmarkedArticles, 'id');
 
   const [bookmarkStorageState, setBookmarkStorageState] = useState(uniqueBookmarkedArticles);
-
-  useEffect(() => {
-    if (uniqueBookmarkedArticles.length > 0 && bookmarkStorageState.length === 0) {
-      setBookmarkStorageState(uniqueBookmarkedArticles);
-    }
-  }, [uniqueBookmarkedArticles.length]);
-
-  const [isSmallerThan768] = useMediaQuery('(max-width: 768px)');
 
   const onRemoveBookmark = (articleId: number, articleTitle: string) => {
     setArticleToBeRemoved({ title: articleTitle, id: articleId });
@@ -56,10 +50,16 @@ function BookmarkScreen() {
     const articleId = articleToBeRemoved?.id ?? 0;
     const newBookmarkStorageState = bookmarkStorageState
       .filter((article) => article?.id !== articleId);
-    setBookmarkStorageState(newBookmarkStorageState);
 
+    setBookmarkStorageState(newBookmarkStorageState);
     setArticleToBeRemoved(null);
   };
+
+  useEffect(() => {
+    if (uniqueBookmarkedArticles.length > 0 && bookmarkStorageState.length === 0) {
+      setBookmarkStorageState(uniqueBookmarkedArticles);
+    }
+  }, [uniqueBookmarkedArticles.length]);
 
   return (
     <Flex flexDir="column" p={isSmallerThan768 ? '16px' : '24px 32px'}>
@@ -84,7 +84,7 @@ function BookmarkScreen() {
       }
       </Flex>
       <BookmarkAlertDialog
-        leastDestructiveRef={ref}
+        leastDestructiveRef={leastDestructiveRef}
         isOpen={articleToBeRemoved !== null}
         onClose={() => setArticleToBeRemoved(null)}
         articleTitle={articleToBeRemoved?.title ?? ''}

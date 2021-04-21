@@ -14,7 +14,7 @@ function App() {
         <Flex justifyContent="space-between" padding="12px 12px 0 12px">
           <Image src={lineToday} maxW="72px" onClick={() => history.push('/')} cursor="pointer" />
           <Flex>
-            <Button variant="link" onClick={() => history.push('/bookmark')}>Halaman Bookmark</Button>
+            <Button variant="link" onClick={() => history.push('/bookmark')}>Artikel Tersimpan</Button>
           </Flex>
         </Flex>
         <Box h={2} />
