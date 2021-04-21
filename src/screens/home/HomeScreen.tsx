@@ -1,19 +1,12 @@
 import { Box } from '@chakra-ui/react';
-// import { useEffect } from 'react';
-import { useQuery } from 'react-query';
+import HomeBody from 'screens/home/HomeBody';
+import HomeHeader from 'screens/home/HomeHeader';
 
 function HomeScreen() {
-  const data = useQuery({
-    queryKey: 'homeData',
-    queryFn: () => fetch(
-      '/id/portaljson',
-    ).then((res) => res.json()),
-  });
-  console.log(data.data.result);
-
   return (
     <Box>
-      home
+      <HomeHeader />
+      <HomeBody />
     </Box>
   );
 }

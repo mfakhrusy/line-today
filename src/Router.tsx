@@ -1,14 +1,12 @@
 import { Route, Switch } from 'react-router-dom';
+import BookmarkScreen from 'screens/bookmark/BookmarkScreen';
 import HomeScreen from 'screens/home/HomeScreen';
 
 function Router() {
   return (
     <Switch>
-      <Route path="/login">
-        login
-      </Route>
       <Route path="/bookmark">
-        bookmark
+        <BookmarkScreen />
       </Route>
       <Route path="/">
         <HomeScreen />
