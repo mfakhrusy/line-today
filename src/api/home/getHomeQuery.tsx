@@ -24,7 +24,7 @@ export type Section = {
 type Template = {
   title?: string;
   sections?: Array<Section>;
-  type: 50 | 56 | 59 | number;
+  type: number;
 }
 
 type Category = {

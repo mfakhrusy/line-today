@@ -13,7 +13,7 @@ type Props = {
   articles: Array<Article>
 };
 
-function HomeBodyItemType59({ title, articles }: Props) {
+function HomeBodyArticleList({ title, articles }: Props) {
   const [isSmallerThan768] = useMediaQuery('(max-width: 768px)');
 
   return (
@@ -47,4 +47,4 @@ function HomeBodyItemType59({ title, articles }: Props) {
   );
 }
 
-export default HomeBodyItemType59;
+export default HomeBodyArticleList;

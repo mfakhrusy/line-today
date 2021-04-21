@@ -1,6 +1,6 @@
 import { Flex } from '@chakra-ui/react';
 import { getHomeQuery, Article } from 'api/home/getHomeQuery';
-import HomeBodyItemType59 from 'screens/home/HomeBodyItemType59';
+import HomeBodyArticleList from 'screens/home/HomeBodyArticleList';
 import useHomeHeaderStore from 'store/useHomeHeaderStore';
 
 function HomeBody() {
@@ -13,9 +13,16 @@ function HomeBody() {
       {
         activeCategory?.templates.map(({ title, type, sections }) => {
           switch (type) {
+            case 6:
+            case 50:
             case 59:
+            case 63:
+            case 68:
+            case 79:
+            case 80:
+            case 6301:
               return (
-                <HomeBodyItemType59
+                <HomeBodyArticleList
                   key={JSON.stringify(sections ?? (`${title}${type}`))}
                   title={title ?? ''}
                   articles={sections?.reduce((prev: Array<Article>, cur) => (

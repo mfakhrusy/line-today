@@ -15,6 +15,7 @@ function HomeHeaderCategoryItem({ text, id }: Props) {
       variant="outline"
       isActive={id === activeHeaderId}
       onClick={() => setActiveHeaderId(id)}
+      minW="auto"
     >
       {text}
     </Button>
