@@ -106,7 +106,13 @@ function HomeArticleCard({
         <Box h={1} />
         <Text fontSize={isSmallerThan768 ? '13px' : '15px'}>{articleTitle}</Text>
         <Box h={1} />
-        <Text as="small" color="#9f9f9f" fontSize={isSmallerThan768 ? '11px' : '12px'}>{publisher}</Text>
+        <Text
+          as="small"
+          color="#9f9f9f"
+          fontSize={isSmallerThan768 ? '11px' : '12px'}
+        >
+          {publisher}
+        </Text>
       </Link>
     </Flex>
   );
